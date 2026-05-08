@@ -1,3 +1,21 @@
 spring:
   application:
     name: freelancehub
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/freelancehub
+    username: freelancehub
+    password: freelancehub123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+server:
+  port: 8080

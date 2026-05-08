@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: freelancehub-postgres
+    environment:
+      POSTGRES_DB: freelancehub
+      POSTGRES_USER: freelancehub
+      POSTGRES_PASSWORD: freelancehub123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
