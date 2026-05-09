@@ -18,76 +18,81 @@ public class User {
     private LocalDateTime updatedAt;
     private LocalDateTime lastLoginAt;
 
-    public UUID getId() {
-        return id;
+    private User(UserBuilder userBuilder) {
+        this.id = userBuilder.id;
+        this.password = userBuilder.password;
+        this.email = userBuilder.email;
+        this.emailVerified = userBuilder.emailVerified;
+        this.userType = userBuilder.userType;
+        this.status = userBuilder.status;
+        this.createdAt = userBuilder.createdAt;
+        this.updatedAt = userBuilder.updatedAt;
+        this.lastLoginAt = userBuilder.lastLoginAt;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public static UserBuilder builder() {
+        return new UserBuilder();
     }
 
-    public String getPassword() {
-        return password;
-    }
+    public static class UserBuilder {
+        private UUID id;
+        private String password;
+        private String email;
+        private boolean emailVerified;
+        private UserType userType; //ENUM
+        private UserStatus status; //ENUM
+        private LocalDateTime createdAt;
+        private LocalDateTime updatedAt;
+        private LocalDateTime lastLoginAt;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+        public UserBuilder id(UUID id) {
+            this.id = id;
+            return this;
+        }
 
-    public String getEmail() {
-        return email;
-    }
+        public UserBuilder password(String password) {
+            this.password = password;
+            return this;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+        public UserBuilder email(String email) {
+            this.email = email;
+            return this;
+        }
 
-    public boolean isEmailVerified() {
-        return emailVerified;
-    }
+        public UserBuilder emailVerified(boolean emailVerified) {
+            this.emailVerified = emailVerified;
+            return this;
+        }
 
-    public void setEmailVerified(boolean emailVerified) {
-        this.emailVerified = emailVerified;
-    }
+        public UserBuilder userType(UserType userType) {
+            this.userType = userType;
+            return this;
+        }
 
-    public UserType getUserType() {
-        return userType;
-    }
+        public UserBuilder status(UserStatus status) {
+            this.status = status;
+            return this;
+        }
 
-    public void setUserType(UserType userType) {
-        this.userType = userType;
-    }
+        public UserBuilder createdAt(LocalDateTime createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
 
-    public UserStatus getStatus() {
-        return status;
-    }
+        public UserBuilder updatedAt(LocalDateTime updatedAt) {
+            this.updatedAt = updatedAt;
+            return this;
+        }
 
-    public void setStatus(UserStatus status) {
-        this.status = status;
-    }
+        public UserBuilder lastLoginAt(LocalDateTime lastLoginAt) {
+            this.lastLoginAt = lastLoginAt;
+            return this;
+        }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public LocalDateTime getLastLoginAt() {
-        return lastLoginAt;
-    }
-
-    public void setLastLoginAt(LocalDateTime lastLoginAt) {
-        this.lastLoginAt = lastLoginAt;
+        public User build() {
+            return new User(this);
+        }
     }
 
     @Override
