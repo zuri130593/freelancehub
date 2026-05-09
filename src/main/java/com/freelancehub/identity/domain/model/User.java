@@ -12,8 +12,8 @@ public class User {
     private String password;
     private String email;
     private boolean emailVerified;
-    private UserType userType; //ENUM
-    private UserStatus status; //ENUM
+    private UserType userType;
+    private UserStatus status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime lastLoginAt;
